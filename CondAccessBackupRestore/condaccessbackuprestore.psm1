@@ -1,29 +1,20 @@
-﻿<#
+﻿#region Backup
+
+function Backup-CondAcc {
+<#
  .Synopsis
-  Backup and restore Intune Conditional Access Policies
+  Backup Intune Conditional Access Policies
 
  .Description
-  Backup and restore Intune Conditional Access Policies
+  Backup Intune Conditional Access Policies
 
  .Parameter backupfolder
   The path to save the backup files to
-
- .Parameter importfile
-  The file with the policy you want to import to Intune
-
+   
  .Example
-   # Backup policies
-   Backup-CondAcc -backupfolder c:\temp
-
- .Example
-   # Restore a policy
-   Restore-CondAcc -importfile c:\temp\policy.xml
+  Backup-CondAcc -backupfolder c:\temp
 
 #>
-
-#region Backup
-
-function Backup-CondAcc {
 param(
     [Parameter(Mandatory=$true)][string]$backupfolder
     )
@@ -62,6 +53,21 @@ foreach($policy in $policies.items)
 #region Restore
 
 function Restore-CondAcc {
+<#
+ .Synopsis
+  Restore Intune Conditional Access Policies
+
+ .Description
+  Restore Intune Conditional Access Policies
+
+ 
+ .Parameter importfile
+  The file with the policy you want to import to Intune
+
+ .Example
+  Restore-CondAcc -importfile c:\temp\policy.xml
+
+#>
 param(
     [Parameter(Mandatory=$true)][string]$importfile
     )
